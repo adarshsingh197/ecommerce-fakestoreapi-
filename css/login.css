@@ -1,0 +1,22 @@
+.home-title{
+    font-size: 3.5rem;
+    margin-top: 5rem;
+    letter-spacing: 1rem;
+}
+.login-wrapper{
+    width: 600px;
+   margin: 50px auto;
+  
+  
+}
+.input-group{
+    margin: 2rem;
+}
+.signup-btn{
+    cursor: pointer;
+    color:black;
+    padding: 1rem;
+}
+.login-wrapper .signup-btn:hover{
+    text-decoration: underline;
+}
