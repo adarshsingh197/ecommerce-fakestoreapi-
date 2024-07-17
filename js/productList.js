@@ -1,11 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async() => {
     async function fetchProducts() {
         const response = await axios.get("https://fakestoreapi.com/products");
         return response.data;
     }
 
-    async function populateProducts(products) {
-        console.log(products);
+    async function  fetchProductByCategory(category){
+        const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
+        return response.data;
+    }
+    const downloadProducts = await fetchProducts();
+
+    async function populateProducts(flag,customproducts) {
+       const queryParams = new URLSearchParams(window.location.search);
+       const queryParamsObject = Object.fromEntries(queryParams.entries());     
+        let products = customproducts;
+            if(flag==false){
+                if(queryParamsObject['category']){
+                  products = await fetchProductByCategory(queryParamsObject['category'])
+                }
+                else{
+
+                    products= await fetchProducts();
+                }
+            }
         const productList = document.getElementById("productList");
         productList.innerHTML = ""; // Clear the product list before populating
         products.forEach(product => {
@@ -31,20 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    async function initialize() {
-        const products = await fetchProducts();
-        populateProducts(products);
-    }
+    populateProducts(false,downloadProducts)
 
-    initialize();
+   
 
     const filterSearch = document.getElementById("search");
     filterSearch.addEventListener("click", async () => {
         const minPrice = Number(document.getElementById("minPrice").value);
         const maxPrice = Number(document.getElementById("maxPrice").value);
-        const products = await fetchProducts();
+        const products = downloadProducts;
         const filteredProducts = products.filter(product => product.price >= minPrice && product.price <= maxPrice);
-        populateProducts(filteredProducts);
+        populateProducts(true,filteredProducts);
     });
     const clearfilter = document.getElementById("clear");
     clearfilter.addEventListener("click",()=>{

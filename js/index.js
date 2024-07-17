@@ -10,7 +10,7 @@ async function populateCategories(){
         const categoryHolder = document.createElement("div");
         const categoryLink = document.createElement("a");
         categoryLink.textContent=category
-        categoryLink.href="#";
+        categoryLink.href=`productList.html?category=${category}`;
         categoryLink.style.color="white"
         categoryHolder.classList.add("category-item","d-flex","align-items-center","justify-content-center");
         categoryHolder.appendChild(categoryLink);
