@@ -59,8 +59,8 @@
     padding: 0.5rem;
 }
 .product-list-box .product-item img{
-    width: 100%;
-    max-width: 100%;
+    width: 80%;
+    max-width: 80%;
 }
 .product-list-box .product-item .product-name{
   font-size: 1.5rem;
