@@ -66,9 +66,16 @@ document.addEventListener("DOMContentLoaded", async() => {
         })
 
     }
-    populateCategories();
 
-    populateProducts(false,downloadProducts)
+    async function downloadContentAndPopulate(){
+        Promise.all([ populateProducts(false,downloadProducts), populateCategories()        ])
+       .then(()=>{
+        const loaderBackdrop = document.getElementById("loader-backdrop");
+        loaderBackdrop.style.display="none";
+       })
+       
+    }
+    downloadContentAndPopulate();
 
    
 
