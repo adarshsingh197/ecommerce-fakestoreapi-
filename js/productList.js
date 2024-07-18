@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", async() => {
         const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
         return response.data;
     }
+    async function fetchCategories(){
+        const response = await fetch("https://fakestoreapi.com/products/categories");
+        const data = response.json();
+       return data;
+    }
     const downloadProducts = await fetchProducts();
 
     async function populateProducts(flag,customproducts) {
@@ -24,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async() => {
                 }
             }
         const productList = document.getElementById("productList");
-        productList.innerHTML = ""; // Clear the product list before populating
+        productList.innerHTML = ""; 
         products.forEach(product => {
             const productItem = document.createElement("a");
             productItem.target = "_blank";
@@ -47,6 +52,21 @@ document.addEventListener("DOMContentLoaded", async() => {
             productList.appendChild(productItem);
         });
     }
+
+    async function populateCategories(){
+        const categories = await fetchCategories();
+        const categoryList = document.getElementById("categoryList");
+        categories.forEach(category=>{
+          
+            const categoryLink = document.createElement("a");
+            categoryLink.textContent=category
+            categoryLink.href=`productList.html?category=${category}`;
+            categoryLink.classList.add("d-flex", "text-decoration-none");
+           categoryList.appendChild(categoryLink);
+        })
+
+    }
+    populateCategories();
 
     populateProducts(false,downloadProducts)
 
