@@ -33,24 +33,24 @@
         <div class="container">
             <div class="row">
                 <div class="product-details-wrapper d-flex flex-row justify-content-between">
-                <div class="product-img d-flex">
+                <div class="product-img d-flex ">
                     <div>
 
-                        <img src="./img/productimg.jpg">
+                        <img  id="product-img" src="./img/productimg.jpg">
                     </div>
                    
                 </div>
                 <div class="product-details-box d-flex flex-column">
                     <div id="productDetails">
-                        <div class="product-name">
+                        <div class="product-name" id="product-name">
                             Some Product
                         </div>
-                        <div class="product-price fw-bold">
+                        <div class="product-price fw-bold" id="product-price">
                             &#8377; 10000
 
                         </div>
                         <div class="product-description">
-                            <div class="product-description-title fw-bold">
+                            <div class="product-description-data fw-bold" id="product-description-data">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore omnis eveniet consectetur aspernatur, ut distinctio perferendis, excepturi optio possimus cupiditate obcaecati delectus fugiat mollitia maxime sequi molestiae et cumque. Ea.
                             </div>
                         </div>
@@ -74,8 +74,10 @@
     
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/productDetails.js"></script>
 </body>
 </html>

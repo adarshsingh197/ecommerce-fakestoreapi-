@@ -34,17 +34,22 @@ document.addEventListener("DOMContentLoaded", async() => {
             const productItem = document.createElement("a");
             productItem.target = "_blank";
             productItem.classList.add(...["product-item", "text-decoration-none", "d-inline-block"]);
-            productItem.href = "productDetails.html";
+            productItem.href = `productDetails.html?id=${product.id}`;
+
             const productImage = document.createElement("div");
             const productName = document.createElement("div");
             const productPrice = document.createElement("div");
+
             productImage.classList.add("product-img");
             productName.classList.add("product-name", "text-center");
             productPrice.classList.add("product-price", "text-center");
+
             productName.textContent = product.title.substring(0, 12);
             productPrice.innerHTML = `&#8377; ${product.price}`;
+
             const insideProductImage = document.createElement("img");
             insideProductImage.src = product.image;
+
             productImage.appendChild(insideProductImage);
             productItem.appendChild(productImage);
             productItem.appendChild(productName);
